@@ -1,5 +1,3 @@
-import QRCodeStyling from "https://cdn.jsdelivr.net/npm/qr-code-styling/lib/qr-code-styling.min.js";
-
 const qrInput = document.getElementById("qr-input");
 const generateBtn = document.getElementById("generate-btn");
 const qrCanvas = document.getElementById("qr-canvas");
@@ -11,12 +9,26 @@ const downloadSVG = document.getElementById("download-svg");
 const shareBtn = document.getElementById("share-btn");
 const historyList = document.getElementById("history-list");
 const themeToggle = document.getElementById("theme-toggle");
+const notification = document.getElementById("notification");
 
 let qrCode;
 
+// Fungsi Menampilkan Notifikasi
+function showNotification(message, type) {
+  notification.textContent = message;
+  notification.className = type;
+  notification.style.display = "block";
+  setTimeout(() => {
+    notification.style.display = "none";
+  }, 3000);
+}
+
 generateBtn.addEventListener("click", () => {
   const text = qrInput.value.trim();
-  if (!text) return;
+  if (!text) {
+    showNotification("Gagal: Masukkan teks atau URL!", "error");
+    return;
+  }
 
   qrCode = new QRCodeStyling({
     width: Number(sizeSelect.value),
@@ -28,8 +40,9 @@ generateBtn.addEventListener("click", () => {
 
   qrCode.append(qrCanvas);
   document.querySelector(".qr-section").style.display = "block";
+  showNotification("QR Code berhasil dibuat!", "success");
 
-  // Tambahkan ke riwayat
+  // Tambahkan ke Riwayat
   const historyItem = document.createElement("li");
   historyItem.textContent = text;
   historyItem.onclick = () => qrInput.value = text;

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QR Code Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>QR Code Generator</h1>
+    <p>Buat, unduh, dan bagikan QR Code dengan mudah</p>
+
+    <!-- Form Input -->
+    <div class="form">
+      <input type="text" id="qr-input" placeholder="Masukkan teks atau URL">
+      
+      <label>Ukuran:</label>
+      <select id="size-select">
+        <option value="150">150x150</option>
+        <option value="250" selected>250x250</option>
+        <option value="500">500x500</option>
+      </select>
+
+      <label>Warna:</label>
+      <input type="color" id="color-picker" value="#000000">
+
+      <label>Tambahkan Logo:</label>
+      <input type="file" id="logo-upload" accept="image/*">
+
+      <button id="generate-btn">Generate</button>
+    </div>
+
+    <!-- QR Code & Aksi -->
+    <div class="qr-section">
+      <canvas id="qr-canvas"></canvas>
+      <div class="actions">
+        <a id="download-png" download="qrcode.png">Unduh PNG</a>
+        <a id="download-svg" download="qrcode.svg">Unduh SVG</a>
+        <button id="share-btn">Bagikan</button>
+      </div>
+    </div>
+
+    <!-- Riwayat QR Code -->
+    <div class="history">
+      <h3>Riwayat QR Code</h3>
+      <ul id="history-list"></ul>
+    </div>
+
+    <!-- Mode Gelap/Terang -->
+    <button id="theme-toggle">🌙 Mode Gelap</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

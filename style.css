@@ -83,7 +83,32 @@ canvas {
   color: white;
 }
 
+/* Mode Gelap */
 .dark-mode {
   background: #222;
   color: white;
+}
+
+/* Notifikasi */
+#notification {
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-align: center;
+  display: none;
+  font-weight: bold;
+}
+
+#notification.success {
+  background: #4caf50;
+  color: white;
+}
+
+#notification.error {
+  background: #d32f2f;
+  color: white;
+}
+
+.hidden {
+  display: none;
 }
